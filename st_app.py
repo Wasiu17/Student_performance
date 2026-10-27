@@ -434,6 +434,8 @@ if submitted:
     }])
 
     try:
+        # This encoding must match the original model's training pipeline.
+        model_input = col_transform(input_data)
         raw_prediction = model.predict(input_data)
         score = float(raw_prediction[0])
 
