@@ -183,7 +183,7 @@ def col_transform(dataframe):
 # --------------------------------------------------
 @st.cache_resource
 def load_model():
-    return joblib.load("Best_model.jb")
+    return joblib.load("LR_Best_model.jb")
 
 
 try:
@@ -436,8 +436,8 @@ if submitted:
     try:
         # This encoding must match the original model's training pipeline.
         model_input = col_transform(input_data)
-        raw_prediction = model.predict(input_data)
-        score = float(raw_prediction[0])
+        prediction = model.predict(model_input)
+        score = float(prediction[0])
 
         if not pd.notna(score):
             raise ValueError("The model returned an invalid score.")
